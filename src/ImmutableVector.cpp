@@ -1,5 +1,7 @@
 #include "ImmutableVector.h"
 
+#include <cstddef>
+
 template<class T>
 ImmutableVector<T>::ImmutableVector(T *a_buf, size_t a_size) {
   m_data = new T[a_size];
@@ -17,6 +19,6 @@ size_t ImmutableVector<T>::size() const {
 }
 
 template<class T>
-T& ImmutableVector<T>::operator[](size_t index) const {
+const T& ImmutableVector<T>::operator[](size_t index) const {
   return m_data[index];
 }
