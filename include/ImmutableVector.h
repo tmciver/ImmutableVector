@@ -1,3 +1,5 @@
+#pragma once
+
 #include <cstddef>
 
 template <class T>
@@ -11,3 +13,26 @@ class ImmutableVector {
   size_t size() const;
   const T& operator[](size_t index) const;
 };
+
+template<class T>
+ImmutableVector<T>::ImmutableVector(T *a_buf, size_t a_size) : m_size(a_size) {
+  m_data = new T[a_size];
+  for (int i = 0; i < a_size; ++i) {
+    m_data[i] = a_buf[i];
+  }
+}
+
+template<class T>
+ImmutableVector<T>::~ImmutableVector() {
+  delete [] m_data;
+}
+
+template<class T>
+size_t ImmutableVector<T>::size() const {
+  return m_size;
+}
+
+template<class T>
+const T& ImmutableVector<T>::operator[](size_t index) const {
+  return m_data[index];
+}

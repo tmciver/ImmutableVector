@@ -1,6 +1,16 @@
 CPPFLAGS = -Iinclude/
+LIBS = -lcppunit
+OBJS = Tester.o ImmutableVectorTest.o
+VPATH = src:include:test
 
-build : ImmutableVector.o
+tester : $(OBJS)
+	$(CXX) $(CPPFLAGS) $(LDFLAGS) -o $@ $^ $(LIBS)
 
-ImmutableVector.o : src/ImmutableVector.cpp
-	$(CXX) -c $(CPPFLAGS) $< -o $@
+Tester.o : Tester.cpp ImmutableVector.h
+ImmutableVectorTest.o : ImmutableVectorTest.cpp ImmutableVector.h
+
+clean :
+	rm tester $(OBJS)
+
+clean-emacs :
+	find -type f -name '*~' -delete
