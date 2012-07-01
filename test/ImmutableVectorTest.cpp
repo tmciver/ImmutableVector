@@ -2,6 +2,8 @@
 #include "ImmutableVector.h"
 
 #include <stdint.h>
+#include <stdexcept>
+
 #include <cppunit/TestFixture.h>
 #include <cppunit/extensions/HelperMacros.h>
 
@@ -16,4 +18,10 @@ void ImmutableVectorTest::indexTest() {
   CPPUNIT_ASSERT(iv[2] == 3);
   CPPUNIT_ASSERT(iv[3] == 4);
   CPPUNIT_ASSERT(iv[4] == 5);
+}
+
+void ImmutableVectorTest::exceptionTest() {
+  uint8_t data[] = {1, 2, 3, 4, 5};
+  ImmutableVector<uint8_t> iv(data, sizeof(data));
+  CPPUNIT_ASSERT_THROW(iv[5], out_of_range);
 }

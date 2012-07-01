@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstddef>
+#include <stdexcept>
 
 template <class T>
 class ImmutableVector {
@@ -34,5 +35,8 @@ size_t ImmutableVector<T>::size() const {
 
 template<class T>
 const T& ImmutableVector<T>::operator[](size_t index) const {
+  if (index >= m_size) {
+    throw std::out_of_range("Invalid index.");
+  }
   return m_data[index];
 }
