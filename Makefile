@@ -3,6 +3,9 @@ LIBS = -lcppunit
 OBJS = Tester.o ImmutableVectorTest.o
 VPATH = src:include:test
 
+test : tester
+	./tester
+
 tester : $(OBJS)
 	$(CXX) $(CPPFLAGS) $(LDFLAGS) -o $@ $^ $(LIBS)
 
