@@ -25,3 +25,18 @@ void ImmutableVectorTest::exceptionTest() {
   ImmutableVector<uint8_t> iv(data, sizeof(data));
   CPPUNIT_ASSERT_THROW(iv[5], out_of_range);
 }
+
+void ImmutableVectorTest::dataTest() {
+  uint8_t data[] = {1, 2, 3, 4, 5};
+  ImmutableVector<uint8_t> iv(data, sizeof(data));
+  
+  // get a pointer to the underlying data
+  const uint8_t *theData = iv.data();
+
+  // make sure that this data is the same as the data we passed in
+  CPPUNIT_ASSERT(theData[0] == 1);
+  CPPUNIT_ASSERT(theData[1] == 2);
+  CPPUNIT_ASSERT(theData[2] == 3);
+  CPPUNIT_ASSERT(theData[3] == 4);
+  CPPUNIT_ASSERT(theData[4] == 5);
+}

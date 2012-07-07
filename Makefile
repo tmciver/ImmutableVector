@@ -6,7 +6,7 @@ VPATH = src:include:test
 tester : $(OBJS)
 	$(CXX) $(CPPFLAGS) $(LDFLAGS) -o $@ $^ $(LIBS)
 
-Tester.o : Tester.cpp ImmutableVector.h
+Tester.o : Tester.cpp ImmutableVectorTest.o ImmutableVector.h
 ImmutableVectorTest.o : ImmutableVectorTest.cpp ImmutableVectorTest.h ImmutableVector.h
 
 clean :

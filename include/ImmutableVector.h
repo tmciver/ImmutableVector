@@ -12,6 +12,7 @@ class ImmutableVector {
   ImmutableVector(T *a_buf, size_t a_size);
   ~ImmutableVector();
   size_t size() const;
+  const T* data() const;
   const T& operator[](size_t index) const;
 };
 
@@ -31,6 +32,11 @@ ImmutableVector<T>::~ImmutableVector() {
 template<class T>
 size_t ImmutableVector<T>::size() const {
   return m_size;
+}
+
+template<class T>
+const T* ImmutableVector<T>::data() const {
+  return m_data;
 }
 
 template<class T>
