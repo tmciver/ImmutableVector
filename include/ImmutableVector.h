@@ -3,6 +3,8 @@
 #include <cstddef>
 #include <stdexcept>
 
+#include <iostream>
+
 template <class T>
 class ImmutableVector {
   T *m_data;
@@ -10,6 +12,7 @@ class ImmutableVector {
 
  public:
   ImmutableVector(T *a_buf, size_t a_size);
+  ImmutableVector(const ImmutableVector<T>& iv);
   ~ImmutableVector();
   size_t size() const;
   const T* data() const;
@@ -21,6 +24,16 @@ ImmutableVector<T>::ImmutableVector(T *a_buf, size_t a_size) : m_size(a_size) {
   m_data = new T[a_size];
   for (int i = 0; i < a_size; ++i) {
     m_data[i] = a_buf[i];
+  }
+}
+
+template<class T>
+ImmutableVector<T>::ImmutableVector(const ImmutableVector<T>& iv) {
+  //std::cout << "In copy constructor." << std::endl;
+  m_size = iv.m_size;
+  m_data = new T[m_size];
+  for (int i = 0; i < m_size; ++i) {
+    m_data[i] = iv.m_data[i];
   }
 }
 
