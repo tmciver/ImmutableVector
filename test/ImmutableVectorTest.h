@@ -9,6 +9,7 @@ class ImmutableVectorTest : public CppUnit::TestFixture {
   CPPUNIT_TEST_SUITE(ImmutableVectorTest);
   CPPUNIT_TEST(indexTest);
   CPPUNIT_TEST(copyTest);
+  CPPUNIT_TEST(assignmentTest);
   CPPUNIT_TEST(exceptionTest);
   CPPUNIT_TEST(dataTest);
   CPPUNIT_TEST_SUITE_END();
@@ -16,6 +17,7 @@ class ImmutableVectorTest : public CppUnit::TestFixture {
  protected:
   void indexTest();
   void copyTest();
+  void assignmentTest();
   void exceptionTest();
   void dataTest();
 };
