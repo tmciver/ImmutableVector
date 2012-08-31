@@ -80,9 +80,7 @@ class ImmutableVector<T>::IVData {
 
  IVData(const T *a_data, size_t a_size) : m_size(a_size), refs(1) {
     m_data = new T[m_size];
-    for (int i = 0; i < m_size; ++i) {
-      m_data[i] = a_data[i];
-    }
+    copy(a_data, a_data + a_size, m_data);
   }
 
   ~IVData() {
